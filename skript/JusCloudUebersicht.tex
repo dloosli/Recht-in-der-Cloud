@@ -1,0 +1,444 @@
+% Dokumentformatierung
+\documentclass[a4paper,pointlessnumbers]{scrreprt}
+
+% Variablen
+\newcommand{\projektname}{Cloud Solutions}
+\newcommand{\versionsnummer}{0.1}
+\newcommand{\dokumentbezeichnung}{JusCloudUebersicht.pdf}
+
+% Pakete Helvetia Schrift etc.
+\usepackage[a4paper, bottom=4.5cm, headsep=2cm, footskip=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[scaled=0.85]{helvet}
+\usepackage{colortbl}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage[]{graphicx}
+\usepackage{epstopdf}
+\usepackage{enumitem}
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\usepackage{titlesec}
+\usepackage{textpos}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{float}
+
+% Kopf- und Fusszeilen
+\ihead{
+	\includegraphics[width=0.25\linewidth]{HSR_Logo_CMYK.eps}
+	}
+\ohead{\footnotesize{Hochschule für Technik, Rapperswil\\} \scriptsize{\projektname}}
+\ifoot{\footnotesize \dokumentbezeichnung \\ \vspace*{6mm}}
+\cfoot{\footnotesize Version: \versionsnummer \\ \vspace*{6mm} \pagemark}
+\ofoot{\footnotesize Datum:  \today \\ \vspace*{6mm}}
+\renewcommand*\chapterpagestyle{scrheadings}
+ 
+%Color Paket und Farbdefinition
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{greycolor}{rgb}{0.65,0.65,0.65}
+\definecolor{lightblue}{rgb}{0.77,0.77,1}
+
+%Absatz und Schriftformatierung
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0pt}}
+\renewcommand*{\chapterheadendvskip}{\vspace{12pt}}
+\titlespacing{\chapter}{0pt}{18pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing{\subsection}{0pt}{6pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\renewcommand{\familydefault}{\sfdefault}
+\linespread{1.1} 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4mm}
+\setlist{itemsep=0.5em,topsep=0.1em,after={\bigskip}}
+\newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}}
+
+% Tabellenformatierung
+\setlength{\arrayrulewidth}{0.4pt}
+
+% Hyperref Fromatierung
+\hypersetup{
+    colorlinks = true,
+    linkbordercolor = {white},
+    allcolors = blue
+}
+
+% Merkbox
+\usepackage{emerald}
+\usepackage[many]{tcolorbox}
+\newcommand{\merkbox}[2][0.8\textwidth]{ \begin{center} \begin{tcolorbox}[enhanced, drop fuzzy midday shadow, width={#1}, opacityframe=0.5, colframe=BrickRed, colback=white] {\ECFTeenSpirit \color{BrickRed}\textbf{Merkbox} \qquad {\tiny das gilt es zu beachten}} \\  #2 \end{tcolorbox} \end{center}}
+
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{10mm}
+\Large Cloud Solutions\\
+\large Frühlingssemester 2018\\
+\vspace*{30mm}
+\Huge \textbf{Das Recht in der Cloud}\\
+\Large \textit{Ein Überblick über die geltenden Bestimmungen}\\
+\vspace*{2mm}
+\large Version: \versionsnummer, Datum: \today\\
+\vspace*{10mm}
+\large {\itshape  Modulverantwortlicher:}\\
+\large Mirko Stocker\\
+\large HSR, Rapperswil\\[\baselineskip]
+\begin{textblock}{4}(3.6, 1)
+\includegraphics[width=0.5\linewidth]{juscloud}
+\end{textblock}
+\vfill
+{\color{greycolor}\rule{0.5\textwidth}{0.4pt}}\\
+\small \textit{erstellt von:}\\
+\small David Loosli\\
+\small HSR Rapperswil\\
+\end{titlepage}
+
+{ \hypersetup{hidelinks} \tableofcontents }
+
+\chapter{Einleitung}
+Während das Auslagern von Daten und Rechenkapazität in die Cloud aus technischer Sicht sehr viele Möglichkeiten und Chancen bietet, bringt dies aus juristischer Sicht einige (Rechts-)Unstimmigkeiten und (Rechts-)Unsicherheiten mit sich. Die meisten dieser Probleme entspringen der nicht auf die rechtliche Handhabe von Cloudcomputing ausgerichteten \glqq Architektur\grqq{} der historisch gewachsenen Gesetzgebung. So findet sich erstens auch in der Schweiz kein eigenständiges Gesetz zum Thema des Cloudcomputing, sondern es müssen eine Vielzahl von Bestimmungen in verschiedensten Gesetzestexten zur Beurteilung solcher Fälle herangezogen werden. Zweitens stellt sich aufgrund der Internationalisierung der Datenverarbeitung in der Cloud die Frage nach dem anwendbaren Recht und somit insbesondere welches Land für die Beurteilung einer juristischen Angelegenheit zuständig ist. Als dritter Problembereich sei erwähnt, dass die Gesetzgebung der technischen Entwicklung stets hinterher hinkt. Dies führt dazu, dass bis anhin einerseits nur sehr wenige Gerichtsurteile die Auslegung nicht ganz eindeutiger Bestimmungen respektive eine Richtung für Abwägungsentscheide enthaltende Regelungen festlegen und andererseits gesetzliche Regelungen neuster technischer Errungenschaften (noch) gänzlich fehlen. 
+
+Dieses kurze Skript soll Interessierten mit einer technischen Ausbildung einen Überblick über die zu beachtenden Regelungen im Bereich des Cloud Computing geben und dadurch eine gewisse Sensibilisierung mit Blick auf juristischen Fragestellungen bewirken, ohne zu sehr auf die einzelnen Gesetze und Artikel einzugehen. Dieser Absicht entsprechend erhebt dieses Dokument keinen Anspruch auf Vollständigkeit - ganz im Gegenteil wird bewusst und explizit beispielsweise auf tatsächlich ereignete Fallbeispiele \footnote{Auch wenn die Fallbeispiele an tatsächliche Fälle angelehnt sind und somit gewisse Ähnlichkeiten zu tatsächlichen Fällen aufweisen können.} oder auf die Erläuterung der unzähligen Ausnahmeregelungen verzichtet, um eine stark vereinfachte Merkliste für Personen ohne juristischen Hintergrund ableiten zu können. Diese Merkliste soll sodann als Hilfswerkzeug zur Beurteilung der Frage dienen, ob in einem konkreten Fall ein auf das Themengebiet Cloud spezialisierter Juristinnen und Juristen oder Anwältinnen und Anwälte herangezogen werden sollte.
+
+Ebenfalls nicht Teil dieses Skripts ist die Beurteilung von Service Level Agreements, welche im Rahmen einer separaten Vorlesung in diesem Modul bereits näher betrachtet wurden. Allerdings ist die Einhaltung und Durchsetzbarkeit dieser Bestimmungen der SLA auch für die Erfüllung der gesetzlichen Rahmenbedingungen von grosser Bedeutung.
+
+
+\chapter{Anwendbares Recht} \label{anwendbaresrecht}
+Die Festlegung des anzuwendenden Rechts, d.h. welche nationale Gesetzgebung und welche nationalen Gerichte für die Beurteilung einer Streitigkeit zuständig sind, dürfte in vielen Fällen sowohl der schwierigste als auch derjenige Entscheid mit den grössten Auswirkungen sein und ist zwingend vorab zu klären.
+
+\section{Vertragliche Regelung}
+\textit{Grundregel} - Grundsätzlich gelten zuerst die vertraglich vereinbarten Regelungen zwischen dem Cloud Anbieter und dem Kunden. Im Zusammenhang mit dem Thema des anwendbaren Rechts und dem Gerichtsstand gilt es zu beachten, dass diese - zumindest für die meisten Rechtsfragen - ebenfalls vertraglich festgelegt werden können. Durch die explizite Vereinbarung von Schweizer Recht als anwendbares Recht und einem Gerichtsstand in der Schweiz \footnote{In vielen Fällen wird hier der Wohnort respektive bei Gesellschaften der im Handelsregister eingetragene Sitz des Kunden vereinbart. Den Sitz jeder in der Schweiz eingetragenen Unternehmung ist dem Handelsregister zu entnehmen und kann online unter \href{https://www.zefix.ch/de/search/entity/welcome}{https://www.zefix.ch} abgefragt werden.} kann somit bereits ein beachtlicher Teil der Rechtsunsicherheit eliminiert werden.
+
+\textit{Ausnahmen} - Finden sich keine oder nur unzureichende vertragliche Regelungen zwischen dem Cloud Anbieter und dem Kunden oder liegen Sachverhalte vor, die keine Gerichtsstandsvereinbarung zulassen \footnote{Als Beispiel sei das anwendbare Schuldbetreibungs- und Konkursrecht im Falle des Konkurses des Cloud Anbieters erwähnt.}, so kommen entweder bei rein nationalen Streitigkeiten die Schweizer Gesetzgebung und Gerichte zum Zuge oder bei internationalen Angelegenheiten die umfassenden und gerade im Cloud Computing komplexen Regelungen des internationalen Privatrechts zur Anwendung.
+
+\section{Nationales Privatrecht}
+\textit{Grundregel} - Besitzt eine rechtliche Auseinandersetzung keinerlei Auslandsberührung, so wird diese entsprechend dem sog. Territorialitätsprinzip nach Schweizer Recht durch ein Schweizerisches Gericht beurteilt. Im Grundsatz gilt, dass auch auf nationaler Ebene die vertraglich vereinbarten Regelungen den allgemeinen gesetzlichen Bestimmungen vorgehen, sofern sie nicht im Widerspruch zu geltendem Recht stehen (e.g. Sittenwidrigkeit, zwingende Bestimmungen im Datenschutz). Welche Rechtsgebiete und Regelungen es beim Thema Cloud zu berücksichtigen gilt, wird im nachfolgenden Kapitel aufgezeigt.
+
+\textit{Ausnahmen} - Die wichtigste und in den meisten Fällen nur schwierig nachvollziehbare Ausnahme zum Terroitorialitätsprinzip dürfte die extraterritoriale Wirkung von gesetzlichen Bestimmungen von nicht direkt beteiligten Drittstaaten sein. In solchen Fällen beurteilt ein Drittstaat entgegen der Zuständigkeit nationaler Gerichte und der Anwendbarkeit von nationalem Recht eine Angelegenheit nach dem eigenen Recht des Drittstaates, wobei die Durchsetzbarkeit solcher Urteile durch Schweizer Behörden nicht in jedem Fall gegeben ist. Insbesondere im Bereich des Cloud Computing dürfte diese Ausnahme jedoch je länger je mehr an Bedeutung gewinnen, wobei für Schweizer Unternehmen vor allem die mögliche Anwendbarkeit von US-Recht (e.g. Patriot Act) und EU-Recht (e.g. Datenschutzgesetz) frühzeitig erkannt werden muss.
+
+\section{Internationales Privatrecht}
+\textit{Grundregel} - Sobald rechtliche Beziehungen ohne vertragliche Regelungen einen internationalen Charakter aufweisen, wird die Angelegenheit sehr viel komplizierter. In diesen Fällen kann erst aufgrund des konkreten Sachverhaltes erörtert werden, welche Gerichte und Gesetzgebungen die Streitigkeit beurteilen soll. Dazu sind im Beispiel der Schweiz neben dem Bundesgesetz über das Internationale Privatrecht (IPRG) auch Bilaterale und Multilaterale Verträge und Übereinkommen zwischen der Schweiz und Drittstaaten (e.g. Lugano Übereinkommen LugÜ, Haager Übereinkommen) zu berücksichtigen, bevor der Gerichtsstand und das anwendbare Recht oder gar die anwendbaren Regelungen bestimmt werden können.
+
+\textit{Ausnahmen} - Auch in diesem Fall gilt es zu beachten, dass selbst bei der Festlegung des anwendbaren Rechts und des Gerichtsstandes die Problematik der extraterritorialen Wirkung von Gesetzen anderer Staaten in Betracht gezogen werden müssen.
+
+\section{Zusammenfassung}
+\subsection{Grundprinzip}
+Aufgrund der Komplexität der internationalen Regelungen und der sich daraus ergebenden Rechtsunsicherheit sollte somit folgende Regel beachtet werden.
+
+\merkbox[0.7\textwidth]{Sämtliche Schweizer Unternehmen sollten beim Going To Cloud einen eigenen, auf ihre Bedürfnisse abgestimmten Vertrag mit dem Cloud Provider abschliessen, welcher Schweizerisches Recht als \textbf{anwendbares Recht} und Schweizerische Gerichte als \textbf{Gerichtsstand} festlegt.}
+
+\subsection{Ausnahme Fallbeispiel}
+Das nachfolgende Fallbeispiel der extraterritorialen Wirkung der ab Montag, 28. Mai 2018, ihre Wirkung entfaltenden Datenschutz-Grundverordnung (DSGVO) der EU soll jedoch zeigen, dass selbst eine solche Vereinbarung keine vollumfängliche Rechtssicherheit garantieren kann.
+
+\begin{quote}
+\textit{Sachverhalt:} Eine kleine Schweizer Weinhandlung verwendet für ihren Online Shop eine e-Commerce Solution, welche neben der Schweizer Währung auch die Möglichkeit bietet, die Preise der Produkte auf dem Online Shop in Euro anzuzeigen. Die von einer grösseren Weinhandlung übernommenen Allgemeinen Bestimmen enthalten zudem Lieferangaben für ausländische Kunden und eine Gerichtsstandsklausel für Zürich mit Schweizer Recht als anwendbares Recht. Das Unternehmen besitzt ausschliesslich Schweizer Kunden und verwendet für seine Kundendaten einen Schweizer Cloud Anbieter (bspw. APPUiO).
+
+\textit{Fragestellung:} Anwendbares und zu berücksichtigendes Recht?
+
+\textit{Beurteilung:} Im Grundsatz gilt zwar Schweizer Recht, allerdings beurteilen Europäische Gerichte die Anwendbarkeit des DSGVO nach dem sog. Marktortprinzip, so dass aufgrund der möglichen Umstellung auf Euro Preisangaben und den Lieferangaben der AGBs die entsprechenden, strengeren Datenschutzbestimmungen der EU extraterritorial ihre Wirkung entfalten. Dies kann bei Nichteinhaltung zu drastischen Strafen für die kleine Schweizer Weinhandlung führen. Allerdings dürfte sich dieses Problem mit der kommenden Anpassung des Schweizerischen Datenschutzgesetzes an das EU Recht etwas abschwächen.
+\end{quote}
+
+
+\chapter{Schweizerisches Recht}
+Im vorangegangenen Kapitel wurde aufgezeigt, dass sich aufgrund der sehr komplexen Materie des Internationalen Privatrechts eine Festlegung des Gerichtsstands und des anwendbaren Rechts für Schweizer Unternehmen lohnt. Deshalb werden im Folgenden nur die gesetzlichen Bestimmungen des Schweizerischen Rechts näher betrachtet werden, welche Berührungspunkte mit der Thematik der Cloud aufweisen.
+
+\section{Öffentliches Recht und Privatrecht}
+\textit{Grundregel} - Eine erste grosse Trennung in der \glqq Architektur\grqq{} der Schweizerische Gesetzgebung ist diejenige zwischen Privatrecht und öffentlichem Recht. Während das öffentliche Recht das Verhältnis zwischen dem Staat und seinen Bürgerinnen und Bürgern regelt (sog. Subordinationstheorie, bspw. Verwaltungsrecht [Bildungswesen, Baurecht etc.], Strafrecht, Steuerrecht, Strassenverkehrsrecht u.v.m.), legt das Privatrecht diejenigen Regeln fest, welche zwischen Privatpersonen - darunter fallen sowohl natürliche Personen (i.e. Menschen) als auch juristische Personen (i.e. Unternehmen) - zu berücksichtigen sind (bspw. Zivilgesetzbuch, Obligationenrecht und div. Sondergesetze und Erlasse). Diese Trennung besitzt auch Auswirkungen auf das Thema des Cloud Computing:
+\begin{itemize}[itemsep=0pt]
+\item \textit{Öffentliches Recht:} Während die privatrechtlichen Bestimmungen einen Mindeststandard für das Auslagern von Daten in die Cloud festlegen, gehen die meisten Behörden und öffentlich-rechtlichen Institutionen eine Schritt weiter. So finden sich beispielsweise im Kanton Zürich verschiedenste kantonale Verordnungen und Merkblätter zu diesem Thema, welche weitaus strengere Vorschriften und ausführliche Checklisten festlegen (vgl. Anhang \ref{A}) und sogar gewisse kryptographische Algorithmen vorschreiben. Aufgrund der Vielzahl dieser Bestimmungen ist im Bereich des Öffentlichen Rechts stets anhand des konkreten Falles zu entscheiden, weshalb nachfolgend nur noch auf das Privatrecht eingegangen wird.
+\item \textit{Privatrecht:} Für privatrechtliche Fragestellungen im Bereich des Cloud Computing gilt es verschiedenste Gesetze zu berücksichtigen - die wichtigsten Gesetzestexte werden in diesem Skript näher betrachtet.
+\end{itemize}
+
+\merkbox[0.7\textwidth]{Für Institutionen und Behörden des Öffentlichen Rechts sind neben den vertraglichen Regeln zwingend die entsprechenden (verschärften) Regelungen zum Thema Cloud zu berücksichtigen. Subjekte des Privatrechts unterstehen den nachfolgenden Bestimmungen (gesetzliche Mindestanforderungen).}
+
+\textit{Ausnahmen} - Die Abgrenzung zwischen Öffentlichem Recht und Privatrecht ist leider nicht wirklich trennscharf. So statuiert beispielsweise Artikel 178 Absatz 3 der Bundesverfassung die Möglichkeit des Staates, öffentliche Aufgaben unter gewissen Voraussetzungen an Private zu übertragen \footnote{vgl. \href{https://www.egovernment.ch/de/dokumentation/rechtliche-fragen/zusammenarbeit/ubertragung-von-offentlichen-aufgaben-an-private/}{https://www.egovernment.ch/.../ubertragung-von-offentlichen-aufgaben-an-private/}, letztmals besucht: \today}. Diese Privatpersonen oder privaten Unternehmen unterstehen sodann je nach Ausgestaltung der rechtlichen Beziehung in vielerlei Hinsicht Öffentlichem Recht \footnote{Zur Abwägung, ob eine bestimmte Rechtslage dem öffentlichen Recht oder dem Privatrecht unterliegt, finden sich diverse Abhandlungen und Publikationen. Details zu dieser Abgrenzung finden sich bspw. in einem Artikel in der Zeitschrift recht - \textit{Was sind öffentliche Aufgaben?}, Bernhard Rütsche, recht 2013, Heft 4, Seite 153 ff., zu finden unter\\ \href{https://www.unilu.ch/fileadmin/fakultaeten/rf/ruetsche/dok/Ruetsche\_recht\_OeffentlicheAufgaben\_2014.pdf}{https://www.unilu.ch/.../Ruetsche\_recht\_OeffentlicheAufgaben\_2014.pdf}, letztmals besucht: \today}. Des Weiteren existieren Organisationen, die auf den ersten Blick als privatrechtliches Unternehmen qualifiziert werden könnten, jedoch dem öffentlichen Recht unterstehen. Als Beispiel sei an dieser Stelle die FINMA erwähnt, welche als unabhängige Behörde über den schweizerischen Finanzmarkt hoheitliche Befugnisse über Banken, Versicherungen, Börsen, Effektenhändler, kollektive Kapitalanlagen, deren Vermögensverwalter und Fondsleitungen sowie Vertriebsträger und Versicherungsvermittler besitzt. Ein Bundesgerichtsentscheid aus dem Jahre 2016 \footnote{Bundesgerichtsentscheid 6B 182/2016, \href{https://entscheide.weblaw.ch/cache.php?link=10.11.2015\_SK.2015.35}{https://entscheide.weblaw.ch/cache.php?link=10.11.2015\_SK.2015.35}} bestätigt demnach auch, dass die Angestellten der FINMA als Beamtinnen und Beamte gelten und somit das Amtsgeheimnis zu wahren haben.
+
+\textit{Fallbeispiel} - Das nachfolgende Fallbeispiel soll die Ausnahme der Übertragung öffentlicher Aufgaben an Privatunternehmen illustrieren. Es gilt die \textbf{Annahme}, dass diese Übertragung grundsätzlich erlaubt sei (i.e. genügende gesetzliche Grundlage, öffentliches Interesse und die Beaufsichtigung seien erfüllt).
+
+\begin{quote}
+\textit{Sachverhalt:} Die Steuersoftware mit der Möglichkeit der Online Einreichung der Steuererklärung wird durch ein privates Unternehmen programmiert. Zur Vereinfachung für den Steuerprüfer werden einige Berechnungen bereits durch den Servern des Unternehmens ausgeführt, bevor die Daten an das Steueramt weitergereicht werden. Aufgrund der gestiegenen Anforderungen an die Rechenleistung möchte das Unternehmen nun in die Cloud und hat bereits erste Abklärungen vorgenommen, um den geltenden privatrechlichen Grundlagen zu genügen.
+
+\textit{Fragestellung:} Untersteht das Unternehmen dem Privatrecht?
+
+\textit{Beurteilung:} Im Grundsatz ist dies zu bejahen. Nun stellt sich jedoch bezüglich der Steuersoftware die Frage, ob mit den Berechnungen und den erhobenen Steuerdaten bereits eine Übertragung einer öffentlichen Aufgabe an das Privatunternehmen stattgefunden hat. Wird diese Frage bejaht, so dürfte - unabhängig vom Kanton - das Unternehmen diesbezüglich den (strengeren) Vorschriften des Öffentlichen Rechts unterstehen und somit würden die bisherigen Abklärungen \textbf{nicht} genügen.
+\end{quote}
+
+\section{Datenschutzrecht}
+Durch die Auslagerung von Daten in die Cloud nimmt ein Unternehmen zwangsläufig einen gewissen Kontrollverlust bezüglich der Datenbearbeitung in Kauf. Die wichtigsten Regelungen, die es diesbezüglich zu beachten gilt, finden sich im Schweizerischen Datenschutzgesetz \footnote{\href{https://www.admin.ch/opc/de/classified-compilation/19920153/index.html}{https://www.admin.ch/opc/de/classified-compilation/19920153/index.html}, letztmals besucht: \today}.
+
+\subsection{Datenschutz}\label{personendaten}
+\textit{Grundregel} - Das Datenschutzgesetz DSG bezweckt im Grundsatz den Schutz der Persönlichkeit von bestimmten oder bestimmbaren natürlichen (d.h. Menschen) und juristische Personen (i.e. Unternehmen), über welche Daten erhoben und bearbeitet werden. Grundsätzlich findet das Gesetz auf sämtliche Personendaten Anwendung (auch solche auf den eigenen Servern!), wobei für besonders schützenswerte Personendaten noch strengere Vorschriften gelten. Unter dem Begriff \textit{bearbeiten} ist nach Artikel 3 lit. e jeder Umgang mit Personendaten zu verstehen unabhängig von den angewandten Mitteln und Verfahren, insbesondere das Beschaffen, Aufbewahren, Verwenden, Umarbeiten, Bekanntgeben, Archivieren oder Vernichten von Daten. Sollen nun bestimmte Daten in der Cloud bearbeitet werden, so ist in einem ersten Schritt zu prüfen, ob es sich tatsächlich um Personendaten handelt. Allerdings gilt es zu berücksichtigen, dass der Begriff der Personendaten auch in der Schweiz sehr weit gefasst ist - nach EU Richtlinien fällt beispielsweise selbst das Sammeln von Browser Fingerprint Daten unter das Datenschutzgesetz. 
+
+\merkbox[0.7\textwidth]{Die Datenbearbeitung muss Personendaten im Sinne des Datenschutzrechtes betreffen. Ansonsten sind die Merkboxen in diesem Abschnitt für die Auslagerung von Daten in die Cloud \textbf{nicht} zwingend zu berücksichtigen.}
+
+In einem zweiten Schritt gilt es sodann die Voraussetzungen nach Artikel 10\textit{a} des Datenschutzgesetzes zu prüfen. Demnach ist eine Auslagerung von Personendaten an einen Dritten (i.e. der Cloud Anbieter) dann zulässig, wenn \textbf{(a)} der Dritte die Daten nur so bearbeitet, wie dies auch der Cloud Kunde tun dürfte; \textbf{(b)} keine Geheimhaltungspflicht (bspw. Anwaltsgeheimnis etc.) dies verbietet; und \textbf{(c)} die Datensicherheit gewährleistet ist.
+
+\merkbox[0.7\textwidth]{Der Vertrag muss sowohl die genau Art der Datenverarbeitung als auch den Rahmen der Datensicherheit mit entsprechenden Überprüfungs- und Durchsetzungsmöglichkeiten  festhalten.}
+
+Grundsätzlich gilt auch für diese Gesetzgebung das Territorialitätsprinzip (vgl. Kapitel \ref{anwendbaresrecht}). Allerdings ist zu beachten, dass selbst für einen Schweizer Cloud Anbieter nicht der Sitz in der Schweiz für die Beurteilung der Zulässigkeit der Auslagerung an Dritte massgebend ist, sondern der tatsächliche Ort der Datenbearbeitung (insbesondere Serverstandorte und Datencenter). Auch ausländische Unternehmen mit Sitz ausserhalb der Schweiz, deren Server in der Schweiz stehen oder die Personendaten von in der Schweiz lebenden Personen sammeln, fallen unter das Schweizer Datenschutzgesetz. 
+
+\merkbox[0.7\textwidth]{Der Vertrag muss sämtliche möglichen Orte der Datenverarbeitung (i.d.R. Serverstandorte) aufführen und eine Pflicht des Cloud Anbieters zur Auskunftserteilung und Meldung von Standortwechseln festlegen.}
+
+Den betroffenen Personen stehen verschiedene Rechte bezüglich der über sie abgespeicherten Daten zu. Darunter fallen ein Auskunftsrecht, die Richtigkeit der Daten, Anspruch auf angemessene Datensicherheit, Verhältnismässigkeit u.v.m. Um diese Ansprüche auch gegenüber dem Cloud Anbieter geltend machen zu können, muss der Cloud Kunde ein entsprechendes Weisungsrecht vereinbaren.
+
+\merkbox[0.7\textwidth]{Ein vertraglich festgehaltenes Weisungsrecht gegenüber dem Cloud Anbieter ist zwingend erforderlich.}
+
+\textit{Ausnahmen} - Die im Bereich des Cloud Computing wohl wichtigste Ausnahme findet sich in Artikel 6 des DSG, wonach Personendaten nicht ins Ausland bekannt gegeben werden dürfen, wenn dadurch die Persönlichkeit der betroffenen Personen schwerwiegend gefährdet würde, namentlich weil eine Gesetzgebung fehlt, die einen angemessenen Schutz gewährleistet. Diese Bestimmung besitzt eine enorme Auswirkung bei der Auswahl des Cloud Anbieters, da beispielsweise die USA grundsätzlich \footnote{Selbstverständlich gibt es auch in diesem Fall Ausnahmen von der Ausnahme, insbesondere Artikel 6 Absatz 2 und das Label \glqq unter bestimmten Voraussetzungen\grqq{} der Länderliste des EÖDB unter \href{https://www.edoeb.admin.ch/dam/edoeb/de/dokumente/2017/04/staatenliste.pdf.download.pdf/staatenliste.pdf}{https://www.edoeb.admin.ch/.../staatenliste.pdf}, wobei bis 2017 die USA in der Länderliste noch explizit als mit ungenügendem Schutz qualifiziert wurde (und dies nach Meinung vieler Fachexperten auch hätte bleiben sollen).} als Land qualifiziert wird, welches über \textbf{kein} angemessenes Datenschutzniveau verfügt (IBM, Azure, Amazon u.v.m.) \footnote{Mehr zum Thema Datenschutz und USA findet sich in der Masterarbeit \textit{Cloud Computing – Eine rechtliche Gewitterwolke?} von Eric T. Neuenschwander ab Seite 17.}. Eine weitere Kategorie von Ausnahmen bilden Spezialregelungen für besondere Geheimhaltungspflichten (Anwaltsgeheimnis, Bankengeheimnis u.s.w.). Die erste Ausnahme ist derart wichtig, dass sie eine eigene Merkbox erhält:
+
+\merkbox[0.7\textwidth]{Das Datenschutzniveau an den Standorten der Datenverarbeitung des Cloud Anbieters muss im Mindesten dem Datenschutzniveau der Schweiz entsprechen. Die USA verfügt grundsätzlich \textbf{nicht} über einen entsprechenden Datenschutz!}
+
+
+\subsection{Datensicherheit}
+\textit{Grundregel} - Im Zusammenhang mit dem Datenschutz muss zwingend auch das Thema Datensicherheit angesprochen werden. Artikel 7 des Datenschutzgesetzes bestimmt, dass Personendaten durch angemessene technische und organisatorische Massnahmen gegen unbefugtes Bearbeiten geschützt werden müssen. Die Konkretisierung dieses Artikels findet sich einerseits in der Verordnung zum Bundesgesetz über den Datenschutz VDSG und andererseits in verschiedenen Weisungen der Behörden. Die von Artikel 8 und 9 der Datenschutzverordnung verlangten Massnahmen werden zu einem grossen Teil vom bereits in der Vorlesung erläuterten Service Level Agreement (SLA) abgedeckt - darunter fallen insbesondere die Datentrennung (i.e. public vs. private Cloud), Verfügbarkeit, Zugriffsrechte, etc. Allerdings müssen an dieser Stelle zwei Aspekte noch genauer betrachtet werden:
+\begin{itemize}[itemsep=0pt]
+\item \textit{Kontrolle des Cloud Anbieters:} Grundsätzlich ist der Cloud Kunde nach Artikel 10\textit{a} des DSG dazu verpflichtet, den Cloud Anbieter bezüglich der Einhaltung der Vereinbarungen zu kontrollieren. Während die Empfehlung des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) lautet, die entsprechende Einhaltung der vertraglichen Regeln periodisch vor Ort beim Cloud Anbieter zu prüfen, wird in der Lehre davon ausgegangen, dass regelmässige Reportings des Cloud Anbieters ausreichen sollten. Eine Konkretisierung durch einen Gerichtsentscheid findet sich diesbezüglich jedoch nicht.
+\item \textit{Verschlüsselung:} Die vorgenannten Artikel implizieren die Pflicht zur \glqq genügenden\grqq{} Verschlüsselung von Personendaten, d.h. Klartextspeicherung in einer Datenbank mit Zugriffskontrolle dürfte in der Regel nicht ausreichen. Zudem wird in den meisten Fällen nicht in Betracht gezogen, dass ein Cloud Anbieter grundsätzlich kein Interesse an einer Verschlüsselung der Daten besitzt - dadurch würde sein oftmals vereinbartes Recht an den persönlichen Daten ihrer Kunden wirkungslos \footnote{Details zu diesen Überlegungen finden sich unter \href{https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-60444.html}{https://www.admin.ch/.../medienmitteilungen.msg-id-60444.html} und in der Masterarbeit \textit{Cloud Computing – Eine rechtliche Gewitterwolke?} von Eric T. Neuenschwander auf den Seiten 20, 30.}. Ebenfalls Abhilfe schafft die Verschlüsselung der Personendaten in sämtlichen bereits beschriebenen (e.g. extraterritoriale Wirkung) und nachfolgend erläuterten Problembereichen (Schuldbetreibungs- und Konkursrecht u.s.w.). Die Verschlüsselung der Daten sollte jedoch nicht durch den Cloud Anbieter sondern den Cloud Kunden selbst vorgenommen werden. Denn eine Vereinbarung zur Verschlüsselung der Personendaten durch den Cloud Anbieter löst zwar das Problem der Zugriffe unbefugter Dritter, nicht jedoch beispielsweise die Verwertung im Konkursfall (vgl. dazu Abschnitt \ref{konkurs}).
+
+Obwohl in diesem Skript der juristische Aspekt des Going to Cloud beleuchtet werden soll, sind an dieser Stelle noch einige technische Überlegungen zum Thema Verschlüsselung festzuhalten. In der juristischen Literatur wird jeweils nur von Verschlüsselung der Daten gesprochen, ohne eine technische Differenzierung vorzunehmen. Während die Verschlüsselung von \textit{data at rest} aufgrund des Verbleibs der Schlüssel beim Cloud Kunden unproblematisch erscheint, findet sich jedoch bei der Standardkommunikation (d.h. \textit{data at transfer}) und der Verarbeitung der Daten in der Cloud (i.e. \textit{data in use}) die Problematik, dass der Private Key auch in der Cloud abgespeichert werden muss. Eine Untersuchung dieser Problematik könnte für zukünftige Anwendungen durchaus interessant sein.
+\end{itemize}
+
+\merkbox[0.7\textwidth]{Der Vertrag muss zwingend die Pflicht des Cloud Anbieters zu einem regelmässigen Reporting bezüglich der Einhaltung der Vereinbarungen beinhalten.}
+
+\textit{Ausnahmen} - Die wohl wichtigste Ausnahme in diesem Bereich findet sich zum Thema Verschlüsselung der Daten. In verschiedenen Spezialgesetzen, Weisungen und internen Richtlinien sowohl zu öffentlichrechtlichen als auch privatrechtlichen Organisationen finden sich strengere Bestimmungen zur Verschlüsselung der Personendaten - so hält die FINMA bezüglich Bankkundendaten fest, dass \glqq eine wirksame und zeitgemässe Verschlüsselung\grqq{} nötig sei und \glqq die Reidentifikation aufgrund der Entschlüsselung mit Hilfe des \textbf{geheimen} Schlüssel\grqq{} erfolgen müsse \footnote{FINMA Rundschreiben 2008/21 Operationelle Risiken - Banken, vgl. Anhang \ref{B}}. Letzteres impliziert meines Erachtens, dass der private Schlüssel stets in der Schweiz beim Cloud Kunden (i.e. der Bank) zu verbleiben hat.
+
+\subsection{Zusammenfassung}
+\textit{Grundprinzip} - Einerseits kratzen die vorangegangenen Erläuterungen des Datenschutzgesetzes der Schweiz nur an der Oberfläche der gesamten Thematik und andererseits besteht in vielerlei Hinsicht aufgrund fehlender Urteile und der aktuellen Änderungen der Gesetzgebung eine gewisse Rechtsunsicherheit in diesem Gebiet. Zusammenfassend und als Faustregel sei deshalb an dieser Stelle auf die Empfehlung des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) verwiesen:
+\begin{quote}
+\textit{Je vertraulicher, geheimer, wichtiger (weil geschäftskritisch) oder sensitiver (weil besonders schützenswert) die Daten sind, umso eher ist von einer Auslagerung der Daten in die Cloud abzusehen, und desto strikter und umfassender müssen die (Datenschutz-) Sicherheitsvorkehrungen und deren Kontrolle sein.}
+\end{quote}
+
+\textit{Fallbeispiel} - Das nachfolgende, wohl auch bei Informatikerinnen und Informatikern bekannte und ausnahmsweise konkrete Fallbeispiel soll die Auslegung des Begriffs der Personendaten und die Folgen illustrieren.
+
+\begin{quote}
+\textit{Sachverhalt:} Seit August 2009 bietet Google im Internet den Dienst \textit{Street View} für die Schweiz an. Es handelt sich dabei um eine Funktion in Google Maps, mit welcher sich virtuelle Rundgänge namentlich durch Strassen und Plätze unternehmen lassen. Auf den Bildern wurden Gesichter von aufgenommenen Personen und Kennzeichen von Fahrzeugen automatisch verwischt (sog. Blurring). Mehrere Personen, die sich durch einzelne Bilder in ihren Persönlichkeitsrechten verletzt fühlten, wandten sich gegen die Publikation an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB). Dieser hielt die automatische Bearbeitung der Bilder mit einer Anonymisierungssoftware für ungenügend, weil lediglich ein Teil der Gesichter und Kennzeichen verwischt wurde.
+
+\textit{Fragestellung:} Sind nicht perfekt verwischte Bilder von Personen und Autokennzeichen als Personendaten im Sinne des DSG zu qualifizieren?
+
+\textit{Beurteilung:} Das Bundesgericht in seinem Urteil (\href{http://relevancy.bger.ch/php/clir/http/index.php?highlight_docid=atf\%3A\%2F\%2F138-II-346\%3Ade&lang=de&type=show\_document}{BGE 138 II 346}) bestätigte die Meinung des EDÖB, dass das Fotografieren und die anschliessende Übermittlung der Bilder zur Weiterbearbeitung in die USA eine Bearbeitung von Personendaten darstelle, welche die Persönlichkeitsrechte der betroffenen Personen verletze, wenn es sich um Daten aus deren Privatbereich handle. Die Verwendung von Bildern der näheren Umgebung des Lebensmittelpunkts einer Person sei unzulässig, da die Betroffenen trotz unkenntlich gemachtem Gesicht identifiziert werden könnten. Der Betrieb von Google Street View stelle nur dann keine Persönlichkeitsverletzung dar, wenn eine angemessene Unkenntlichmachung gewährleistet sei, sodass ein Personenbezug verneint werden könne. Falls die automatische Verwischung in diesem Bereich nicht funktioniere, könne eine betroffene Person aufgrund der Zoom-Funktionen individualisiert dargestellt und identifiziert werden, was die Persönlichkeitsrechte der Betroffenen verletze \footnote{Details und Auswirkungen des Entscheides finden sich unter \href{https://www.edoeb.admin.ch/edoeb/de/home/datenschutz/Internet\_und\_Computer/onlinedienste/google-street-view/bundesgerichtsentscheid-zu-google-street-view--erkenntnisse-fuer.html}{https://www.edoeb.admin.ch/.../bundesgerichtsentscheid-zu-google-street-view--erkenntnisse-fuer.html}}.
+\end{quote}
+
+\pagebreak
+
+\section{Handels- und Wirtschaftsrecht}
+Unter dem Begriff des Handels- und Wirtschaftsrechts wird eine Menge von Gesetzen und Regelungen zusammengefasst, welche einen direkten Bezug zur Wirtschaft aufweisen. Darunter fallen insbesondere die gesetzlichen Bestimmungen des Gesellschaftsrechts als Teil des OR mit den von den Unternehmen in ihren verschiedenen Gesellschaftsformen (i.e. Aktiengesellschaft AG, GmbH etc.) zu berücksichtigenden Regeln, aber auch das Steuerrecht besitzt verschiedene Berührungspunkte.
+
+\subsection{Gesellschaftsrecht}
+\textit{Grundregel} - Das Gesellschaftsrecht befasst sich mit der Gründung, der Organisation der einzelnen Organen (i.e. Verwaltungsrat, Gesellschafterversammlung etc.), den Beteiligungsgrundsätzen (i.e. Erhöhung des Aktienkapitals etc.) und der Auflösung der verschiedenen Unternehmensformen (i.e. Kollektiv-, Aktiengesellschaft, Einzelunternehmen, Gesellschaft mit beschränkter Haftung GmbH etc.). Allen Formen gemeinsam ist die Pflicht zur Buchführung nach Artikel 957 OR, sofern das Unternehmen im Handelsregister eingetragen wurde respektive werden musste. Die Verarbeitung solcher aus dem Gesellschaftsrecht vorgeschriebener Dokumente (i.e. Gründungsurkunden, Statuten, Gesellschafterverträge, Finanz- und Betriebsbuchhaltung) ist gemäss Artikel 957\textit{a} Absatz 5 OR grundsätzlich auch in elektronischer Form zulässig und umfasst nach Artikel 957\textit{a} Absatz 3 OR alle schriftlichen Aufzeichnungen auf Papier oder in elektronischer oder vergleichbarer Form, die notwendig sind, um den einer Buchung zugrunde liegenden Geschäftsvorfall oder Sachverhalt nachvollziehen zu können \footnote{Darunter können gemäss der allgemeinen Lehre auch eMails fallen, was es bei der Umstellung von einer intern betriebenen eMail-Software auf einen eMail-Cloud-Service zu beachten gilt.}.
+
+\merkbox[0.7\textwidth]{Die Datenbearbeitung muss Geschäfts- und Buchführungsdaten im Sinne des Obligationenrechts betreffen. Ansonsten sind die Merkboxen in diesem Abschnitt für die Auslagerung von Daten in die Cloud \textbf{nicht} zwingend zu berücksichtigen.}
+
+Während die Möglichkeiten der elektronischen Verarbeitung solcher Daten grundsätzlich bereits durch das Thema der Digitalisierung ausgelotet werden, sind bei einem allfälligen Going to Cloud noch zwei weitere Problembereiche zu berücksichtigen: die Aufbewahrungspflicht und die offensichtlichen Berührungspunkte mit dem Datenschutzgesetz. Nach Artikel 958\textit{f} OR sind die Geschäftsbücher und die Buchungsbelege sowie der Geschäftsbericht und der Revisionsbericht während zehn Jahren aufzubewahren, wobei die Aufbewahrungsfrist mit dem Ablauf des Geschäftsjahres beginnt. Die Aufbewahrung der Daten darf nach Absatz 3 der Bestimmung auch elektronisch erfolgen, sofern die Daten jederzeit wieder lesbar gemacht werden können. Diese sehr allgemein gehaltenen Regelungen zur Aufbewahrungspflicht werden in der Verordnung über die Führung und Aufbewahrung der Geschäftsbücher GeBüV noch differenziert festgelegt. Im Zusammenhang mit Cloud Computing ist insbesondere Artikel 9 Absatz 1 lit. b GeBüV zu berücksichtigen - nach diesem Artikel ist eine Aufbewahrung gesellschaftsrechtlicher Daten auf veränderbare Informationsträger nur dann zulässig, wenn
+\begin{enumerate}[label=(\arabic*),itemsep=-4pt,after=\vspace*{-2pt}]
+\item technische Verfahren zur Anwendung kommen, welche die Integrität der gespeicherten Informationen gewährleisten (z.B. digitale Signaturverfahren),
+\item der Zeitpunkt der Speicherung der Informationen unverfälschbar nachweisbar ist (z. B. durch Zeitstempel),
+\item die zum Zeitpunkt der Speicherung bestehenden weiteren Vorschriften über den Einsatz der betreffenden technischen Verfahren eingehalten werden, und
+\item die Abläufe und Verfahren zu deren Einsatz festgelegt und dokumentiert sowie die entsprechenden Hilfsinformationen (z.B. Protokolle und Log Files) ebenfalls aufbewahrt werden.
+\end{enumerate}
+Während die Verfügbarkeit der Daten bereits durch das Service Level Agreement abgedeckt werden sollte, muss der Cloud Kunde entweder selbstständig die obgenannten Verfahren implementieren oder allfällige Massnahmen und Möglichkeiten mit dem Cloud Provider besprechen sowie vertraglich festhalten. Es sei noch angemerkt, dass eine vorsätzliche oder fahrlässige Verletzung der Aufbewahrungspflicht auch strafrechtlich relevant ist (u.a. Artikel 325 Strafgesetzbuch StGB).
+
+\merkbox[0.7\textwidth]{Der Vertrag zwischen dem Cloud Provider und dem Kunden muss zwingend allfällige Massnahmen zur Aufbewahrungspflicht beinhalten. Sofern der Cloud Kunde die Massnahmen selbstständig implementiert, ist im Minimum eine vereinfachte BackUp und Download Möglichkeit archivierter gesellschaftsrechtlicher Daten zu vereinbaren.}
+
+Der zweite Punkt, welcher im Zusammenhang mit gesellschaftsrechtlichen Daten angesprochen werden muss, sind die Berührungspunkte im Bereich der Finanz- und Betriebsbuchhaltung \footnote{Die Finanzbuchaltung soll Aufschluss über die finanzielle Situation des Unternehmens liefern und ist nach aussen hin relevant (d.h. für die Steuerbehörden). Es müssen die rechtlichen Bestimmungen zur Buchführung eingehalten werden. Demgegenüber wird die Betriebsbuchaltung nur intern zur Entscheidungsfindung im Management eingesetzt und ist deshalb viel detailliert als die Finanzbuchhaltung.} mit dem Datenschutzgesetz. Sowohl die Finanz- als auch die Betriebsbuchhaltung beinhalten naturgemäss Kundendaten (bspw. auf Rechnungen, Lagervorgängen etc.) und unterliegen somit den Bestimmungen des Datenschutzes. Dies wird bei einem Gang in die Cloud oftmals vergessen.
+
+\textit{Ausnahme} - Die wohl wichtigste Ausnahme zur gesellschaftsrechtlichen Aufbewahrungspflicht betrifft Daten, die im Zusammenhang mit Grundstücken und Liegenschaften zu Eigentum stehen. Solche Daten müssen nicht nur über 10 Jahre hinweg, sondern über 20 Jahre ab dem Ende des jeweiligen Geschäftsjahres aufbewahrt werden. Besitzt somit eine Gesellschaft eine eigene respektive eigene Liegenschaft(en) oder verwaltet solche, müssen bis zu 21 Jahre alte Unterlagen aufbewahrt, gefunden und auch wieder gelesen werden können.
+
+\subsection{Steuerrecht}
+\textit{Grundregel} - Unter dem Begriff des Steuerrechts wird eine Vielzahl von Vorschriften sowohl auf Bundesebene als auch auf kantonaler Ebene zur Abgabepflicht von Unternehmen gegenüber Staat, Kantonen und Gemeinden zusammengefasst. Darunter fallen insbesondere die Einkommen- und Vermögenssteuer, aber auch die Mehrwertsteuer und weitere Abgabepflichten.
+
+\merkbox[0.7\textwidth]{Bei den betroffenen Daten muss es sich um steuerrechtlich relevante Informationen handeln. Ansonsten sind die Merkboxen in diesem Abschnitt für die Auslagerung von Daten in die Cloud \textbf{nicht} zwingend zu berücksichtigen.}
+
+Analog zum Gesellschaftsrecht ist auch in diesem Rechtsgebiet im Zusammenhang mit dem Cloud Computing insbesondere auf die Auskunfts- und Aufbewahrungspflicht für steuerliche Daten hinzuweisen. Nach Artikel 126 des Bundesgesetzes über die direkte Bundessteuer (DBG) muss beispielsweise sichergestellt sein, dass auf Verlangen der Veranlagungsbehörde mündlich oder schriftlich Auskunft erteilt werden kann und Geschäftsbücher, Belege und weitere Bescheinigungen sowie Urkunden über den Geschäftsverkehr während zehn Jahren vorgelegt werden können. Zudem gelten bezüglich der Archivierung die Vorschriften aus dem Gesellschaftsrecht analog.
+
+\merkbox[0.7\textwidth]{Der Vertrag zwischen dem Cloud Provider und dem Kunden muss zwingend allfällige Massnahmen zur Aufbewahrungspflicht beinhalten. Sofern der Cloud Kunde die Massnahmen selbstständig implementiert, ist im Minimum eine vereinfachte BackUp und Download Möglichkeit archivierter steuerrechtlicher Daten zu vereinbaren.}
+
+\textit{Ausnahmen} - Neben der bereits erwähnten Ausnahme der 20 Jahre dauernden Aufbewahrungsvorschrift im Zusammenhang mit Grundstücken und Liegenschaften gilt es im Steuerrecht zudem zu berücksichtigen, dass grundsätzlich der Kanton die Steuerhoheit besitzt und somit auch eigene Fristen erlassen kann. So gilt im Kanton Zürich beispielsweise eine Aufbewahrungspflicht während 15 anstatt 10 Jahren.
+
+\subsection{Zusammenfassung}
+\textit{Grundprinzip} - Während die rechtlichen Vorschriften im Bereich des Gesellschafts- und Steuerrechts mit Blick auf die Aufbewahrungspflicht in der Cloud relativ eindeutig sind, dürften in diesem Themenbereich die technischen Lösungen als Hauptproblematik im Vordergrund stehen.
+
+So nutzen beispielsweise viele Unternehmen zur Erstellung ihrer Buchhaltung und Einreichung ihrer Steuerunterlagen entweder die offizielle kantonale Steuersoftware oder Software eines Drittanbieters. Da die Daten auch in 10 bis 20 Jahren noch gelesen werden können müssen, empfiehlt es sich die Software ebenfalls zu archivieren, wobei allfällige Abhängigkeiten (i.e. Betriebssystem etc.) zu berücksichtigen sind. Dies muss zwingend auch für Buchhaltungs- und Steuersoftware möglich sein, die von einem Cloud Anbieter in Form von Software as a Service zur Verfügung gestellt wird. In letzterem Fall sollten unbedingt auch eine Risikoabschätzung bezüglich des Lock In Effekts und der Portabilität sowie die bereits erwähnten lizenzrechtlichen Abklärungen vorgenommen werden.
+
+\textit{Fallbeispiel} - Anstelle eines Fallbeispiels soll mit den nachfolgenden Darstellungen verdeutlicht werden, was \glqq 20 Jahre lesbar\grqq{} aus Sicht der Praxis bedeutet. Dazu die wichtigsten beiden Errungenschaften aus dem EDV Bereich des Jahres 1997:
+\begin{itemize}
+\item \textit{Power Macintosh G3:} Desktop Variante mit 233 MHz Prozessor, 32 MB RAM, Floppy Disk und 4 GB Harddisk sowie Mac OS 8 für 2'400 Dollar \footnote{\href{https://everymac.com/systems/apple/powermac\_g3/specs/powermac\_g3\_233\_dt.html}{https://everymac.com/systems/apple/powermac\_g3/specs/powermac\_g3\_233\_dt.html}, letztmals besucht: \today} (entspricht einer heutigen Kaufkraft von rund 3'500 bis 4'000 CHF).
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{images/macg3.pdf}
+\caption{Power Macintosh G3, Desktop}
+\end{center}
+\end{figure}
+\item \textit{CD-RW:} von Philips mit 650 MB für rund 40 Dollar - leider waren die entsprechend benötigten CD-RW Recorder für KMU's mit einem Preis von damals weit über 10'000 Dollar kaum erschwinglich \footnote{\href{https://www.philips.com/a-w/research/technologies/cd/cd-family.html}{https://www.philips.com/a-w/research/technologies/cd/cd-family.html}, letztmals besucht: \today}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{images/cdr870.pdf}
+\caption{Philips Compact Disc Recorder CDR870, allerdings 1998}
+\end{center}
+\end{figure}
+\end{itemize}
+Diese beiden im Jahr 1997 auf den Mark gebrachten Produkte zeigen, dass beispielsweise eine noch der Aufbewahrungspflicht unterliegende Liegenschaftenabrechnung von damals ohne weitere Vorkehrungen heutzutage wohl kaum noch gelesen werden kann. Überlegt sich ein Unternehmen, seine gesellschafts- und steuerrechtlichen Daten nur noch elektronisch zu speichern, ist zwingend auch ein Organisationskonzept zu erstellen, welches die im Zusammenhang mit dem Thema Aufbewahrung stehenden Pflichten berücksichtigt.
+
+\pagebreak
+
+\section{Immaterialgüterrecht}
+Immaterialgüterrechte sind Schutzrechte für Schöpfungen technischer, ästhetischer oder kennzeichenrechtlicher Natur, die dem Inhaber ein exklusives Nutzungs- und Verfügungsrecht über sein Werk vermitteln. Die Schweizerische Gesetzgebung unterscheidet verschiedene Arten solcher Schöpfungen und regelt diese in den unterschiedlichen Gesetzestexten des Patentrechts, des Urheberrechts, des Designrechts, des Kennzeichenrechts, des Firmenrechts und des Markenrechts. Im Bereich der Cloud dürften vorwiegend die nachfolgend beschriebenen rechtlichen Regelungen zur Anwendung kommen.
+
+
+\subsection{Urheberrecht}
+\textit{Grundregel} - Die Artikel 2 bis 5 des Bundesgesetzes über das Urheberrecht und verwandte Schutzrechte URG umschreiben diejenigen Werke, welche durch das Urheberrecht geschützt werden. Im Grundsatz gilt, dass \glqq sämtliche Schöpfungen der Literatur und Kunst mit individuellem Charakter\grqq{} in den Anwendungsbereich des URG fallen. Nach Artikel 2 Abs. 2 URG sind zudem Computerprogramme explizit auch als Werke im Sinne des Urheberrechts zu qualifizieren. Allerdings schützt das Urheberrecht nur die konkrete Implementierung (d.h. den Programm Code), nicht aber ein Verfahren, das einem Computerprogramm zugrunde liegt. Ohne gegen das Urheberrecht zu verstossen, ist es also möglich, dieselbe Idee in einem anderen Computerprogramm umzusetzen oder eine Software mit einer gewissen Funktionalität nachzuprogrammieren. Geniesst ein Werk urheberrechtlichen Schutz, so stehen den Rechteinhabern verschiedene ausschliessliche Nutzungsrechte bis 70 Jahre respektive 50 Jahre bei Computersoftware nach dem Tod des Urhebers zur Verfügung \footnote{Weitere Informationen in verständlicher Form finden sich auf der Seite des Eidgenössischen Instituts für Geistiges Eigentum IGE unter \href{https://www.ige.ch/de.html}{https://www.ige.ch/de.html}.}.
+
+\merkbox[0.7\textwidth]{Bei den beurteilten, in der Cloud abgelegten Daten muss es sich um urheberrechtlich geschützte Werke handeln. Ansonsten sind die Merkboxen in diesem Abschnitt für die Auslagerung von Daten in die Cloud \textbf{nicht} zwingend zu berücksichtigen.}
+
+Im Zusammenhang mit dem Cloud Computing sind insbesondere das Vervielfältigungsrecht und das Recht auf Zugänglichmachung gemäss Artikel 10 Abs. 2 URG relevant. Diese beiden Schutzrechte erlauben es dem Urheber von Computersoftware, im Rahmen einer lizenzrechtlichen Vereinbarung einer Drittperson gewisse Nutzungsrechte für das Computerprogramm und entsprechende Kopien zu veräussern. Den meisten Informatikerinnen und Informatikern dürfte nun auch bereits die Problematik bei der Auslagerung solcher lizenzierter Software respektive bei der Nutzung von entsprechenden Angeboten des Cloud Providers im Sinne von Software as a Service ersichtlich sein. Aufgrund des Wildwuchses im Bereich von Softwarelizenzen lässt sich an dieser Stelle jedoch keine allgemein gültige Beurteilung der Zulässigkeit der Abspeicherung oder zur Verfügung Stellung in der Cloud vornehmen. Es ist vielmehr zu prüfen, ob eine konkrete Lizenzvereinbarung die Softwarenutzung beispielsweise an bestimmte Lokalitäten oder gar Hardware bindet. 
+
+\merkbox[0.7\textwidth]{Im Rahmen des Going to Cloud ist zwingend zu prüfen, ob und unter welchen Voraussetzungen geschäftlich genutzte Software oder sonstige urheberrechtlich geschützten Werke in der Cloud abgelegt und genutzt werden dürfen.}
+
+\textit{Ausnahmen} - Die wichtigsten beiden Ausnahmen zum Vervielfältigungsrecht und für die Nutzung von urheberrechtlich geschützten Werken in der Cloud sind der geschäftliche Eigengebrauch nach Artikel 19 URG und die vorübergehende Speicherung nach Artikel 24\textit{a} URG. Die erste Ausnahme lässt das Erstellen von Kopien zum Eigengebrauch zu - so ist es nach herrschender Lehre und Rechtsprechung \footnote{vgl. dazu BGE 133 III 473} beispielsweise zulässig, in einem Firmen internen Wiki urheberrechtlich geschützte Werke zu speichern und zu verbreiten. Allerdings fällt die Nutzung Software nach Artikel 19 Abs. 4 URG explizit \textbf{nicht} unter diese Bestimmung. Die zweite Ausnahme betrifft die beispielsweise bei der Netzwerkübertragung technisch notwendige Vervielfältigung von urheberrechtlich geschützten Werken. Treffen die vier Bedingungen von Artikel 24\textit{a} kumulativ zu \footnote{Diese Voraussetzungen sind namentlich Vervielfältigungen, die \textbf{(a)} flüchtig sind, \textbf{(b)} integraler und wesentlicher Teil eines technischen Verfahrens darstellen, \textbf{(c)} ausschliesslich der Übertragung in einem Netz zwischen Dritten durch einen Vermittler oder einer rechtmässigen Nutzung dienen und  \textbf{(d)} keine eigenständige wirtschaftliche Bedeutung haben.}, so ist die Vervielfältigung selbst von Software zulässig. 
+
+\subsection{Markenrecht}
+\textit{Grundregel} - Obwohl im Zusammenhang mit dem Thema des Cloud Computing dem Markenrecht zumindest im Grundsatz wohl keine allzu grosse zusätzliche Bedeutung zukommt, sei es der Vollständigkeit halber an dieser Stelle noch kurz erläutert. Eine Marke im rechtlichen Sinn umfasst den gewerblichen Schutz eines Kennzeichens, mit dem ein Unternehmen seine Waren oder Dienstleistungen von solchen anderer Unternehmen unterscheidet. Grundsätzlich können alle grafisch darstellbaren Zeichen Marken im Sinne des Gesetzes sein. Um in den Genuss des Markenschutzes zu kommen, muss das Kennzeichen in einem sog. Markenregister eingetragen werden. In der Schweiz eingetragene Marken können über das elektronische Register \href{https://www.swissreg.ch/srclient/faces/jsp/start.jsp}{Swissreg} und international eingetragene Marken über die \href{http://www.wipo.int/branddb/en/}{Madrid Express Datenbank} abgefragt werden. In der Schweiz verleiht der Markenschutz dem Inhaber das ausschliessliche Recht, seine Marke zur Kennzeichnung von Waren oder Dienstleistungen zu gebrauchen. Der Markeninhaber kann somit anderen verbieten, ein identisches oder ähnliches Zeichen für gleiche oder gleichartige Waren oder Dienstleistungen zu verwenden. Dieses Recht kann weitergegeben werden, beispielsweise durch Lizenzen oder durch Verkauf. Selbstverständlich sind solche Markenverletzungen unabhängig von der Ablage der Daten in der Cloud zu vermeiden.
+
+\textit{Ausnahmen} - Einziger Spezialfall mit Berührungspunkt zum Cloud Computing stellt die wohl doch eher selten auftretende Konstellation dar, in welcher sich ein Unternehmen für einen ausländischen Cloud Provider entscheidet und aufgrund einer ungenügenden Zugriffskontrolle (oder aber auch bewusst) eine zwar in der Schweiz auf ihren Namen eingetragene, im Ausland jedoch durch ein anderes Unternehmen geschützte Marke für ihre Produkte weiterverwendet.
+
+\subsection{Patentrecht}
+\textit{Grundregel} - Patente dienen dem Schutz technischer Erfindungen, also neuen (d.h. eindeutig weiter als der aktuelle Stand der Technik) und nicht naheliegenden Lösungen technischer Problemstellungen. Als technische Erfindungen kommen sowohl Produkte als auch Verfahren in Frage, die gewerblich nutzbar sein müssen. Somit sind Computerprogramme als solche vom Patentschutz grundsätzlich ausgeschlossen, sofern es sich nicht um eine Computer implementierte Erfindung handelt. Eine Computer implementierte Erfindung (CIE) ist eine Erfindung, zu deren Ausführung ein Computer, ein Computernetz oder eine sonstige programmierbare Vorrichtung eingesetzt wird und die mindestens ein Merkmal aufweist, das ganz oder teilweise mit einem Computerprogramm realisiert wird. Sie weist einen technischen Charakter auf und ist somit im Prinzip patentierbar. Sofern eine Erfindung patentrechtlich geschützt werden kann, ist diese ebenfalls in ein entsprechendes Register einzutragen. Eingetragenen Patente geniessen ein ausschliessliches Recht zur gewerblichen Nutzung durch den Rechteinhaber. Auch in diesem Fall ergeben sich abgesehen von den allgemein zu vermeidenden Patentverletzungen für das Cloud Computing keine offensichtlichen Besonderheiten.
+
+\textit{Ausnahmen} - Auch im Bereich des Patentrechts lässt sich im Zusammenhang mit dem Cloud Computing nur ein Spezialfall mit einer allerdings wohl geringen Bedeutung für Cloud Kunden finden. Verletzt der Cloud Provider durch die Verwendung einer bestimmten, patentrechtlich geschützten Cloud Technologie (d.h. eine Computer implementierte Erfindung) das Exklusivrecht eines anderen Anbieters, so kann der Cloud Kunde als Teilnehmer einer mittelbaren Patentverletzung qualifiziert werden - und dies einzig gestützt auf seine Nutzung der Cloud des fehlbaren Cloud Providers \footnote{\href{https://www.nkf.ch/wAssets-nkf2/docs/publikationen/clara\_ann\_gordon/Patentschutz-und-zukuenftige-Trends.pdf}{https://www.nkf.ch/wAssets-nkf2/docs/publikationen/clara\_ann\_gordon/Patentschutz-und-zukuenftige-Trends.pdf}, letztmals besucht: \today}. Allerdings kann dieses Risiko durch eine vertragliche Regelung nicht wegbedungen werden. Eine gewisse Sicherheit bietet diesbezüglich nur eine möglichst umfassende Risikoabklärung im Rahmen des Evaluationsprozesses zum Cloud Anbieter.
+
+\subsection{Zusammenfassung}
+\textit{Grundprinzip} - Im Bereich der Immaterialgüterrechte sind im Zusammenhang mit dem Thema Cloud insbesondere die dem Urheberrecht entspringenden Lizenzrechte für die Nutzung und Verteilung geschützter Software zu berücksichtigen. In einigen speziellen Konstellationen können auch marken- und patentrechtliche Abklärungen nötig sein, die jedoch durch entsprechende Spezialistinnen und Spezialisten erkannt und geprüft werden müssen.
+
+\textit{Fallbeispiel} - Der nachfolgende Fall soll nochmals den Unterschied zwischen Software und anderen urheberrechtlich geschützten Werken verdeutlichen.
+\begin{quote}
+\textit{Sachverhalt:} Ein Schweizer Unternehmen, welches an verschiedenen Standorten Aluminiumteile für die Raumfahrt und Autoindustrie herstellt, möchte ein für sämtliche Standorte zugängliches, auf einer Cloud Plattform zur Verfügung gestelltes Wiki erstellen. Neben Reparaturanleitungen, Prozessbeschrieben und Konfigurationsanweisungen für ihre CAD Maschinen soll das Wiki auch eine Download Plattform für entsprechende CAD Software bereit stellen. 
+
+\textit{Fragestellung:} Darf eine solche Plattform überhaupt erstellt werden? Und falls ja, darf diese auch über einen Cloud Anbieter zur Verfügung gestellt werden?
+
+\textit{Beurteilung:} Während das Bereitstellen der wohl urheberrechtlich geschützten Werke über die Wiki Plattform aufgrund der Bestimmung zum geschäftlichen Eigengebrauch nach Artikel 19 URG unter der Voraussetzung, dass der Cloud Provider eine Zugangskontrolle gewährleisten kann, grundsätzlich zulässig ist, kann die Beurteilung der Zulässigkeit der Download Plattform erst anhand der konkreten Lizenzverträge beurteilt werden. Selbst bei Vorliegen einer konkreten Lizenz ist deren Beurteilung nicht immer einfach und die Gerichte unterschiedlicher Länder können bei der gleichen Lizenz auch zu unterschiedlichen Ergebnissen kommen. Dazu zwei Beispiele aus der Praxis - eines zum Thema der Hardwarebeschränkung und ein anderes aus dem Bereich der Einsatzbeschränkung. \textbf{(a)} Die Apple EULA zum Betriebssystem Mac OS X \footnote{\href{https://www.apple.com/legal/sla/}{https://www.apple.com/legal/sla}, letztmals besucht: \today} enthält in Abschnitt I. eine Nutzungsbeschränkung, wonach die Software nur auf Apple Hardware installiert und ausgeführt werden darf. Eine diesbezügliche juristische Abklärung der rechtlichen Lage vor einigen Jahren kam jedoch zum Schluss, dass diese Nutzungseinschränkung in der Schweiz nach damaligem Recht insbesondere aufgrund des Bundesgesetzes über den unlauteren Wettbewerb UWG und der Qualifikation der Apple EULA als AGB nicht zulässig und deshalb ohne Wirkung sei. Gleiches dürfte für die umliegenden europäischen Ländern gelten. Demgegenüber wird diese Bestimmung in den USA als zulässig angesehen und entsprechende Urteile auch gerichtlich vollzogen. \textbf{(b)} Ende 2017 untersagte NVIDIA in ihrer neusten EULA zu den Geforce Treibern den Endkunden, die Software in Rechenzentren einzusetzen. Dies dürfte insbesondere für Cloud Provider mit Deep Learning Diensten grosse Auswirkungen haben, da NVIDIA Geforce- und Titan Grafikkarten nicht mehr eingesetzt werden dürfen \footnote{\href{https://www.golem.de/news/treiber-eula-nvidia-untersagt-deep-learning-auf-geforces-1712-131848.html}{https://www.golem.de/news/treiber-eula-nvidia-untersagt-deep-learning-auf-geforces-1712-131848.html}, letztmals besucht: \today}. Inwiefern eine solche Einschränkung der Nutzung nach Schweizer Recht zulässig ist, bleibt den Gerichten überlassen.
+\end{quote}
+
+
+\pagebreak
+
+\section{Allgemeines Vertragsrecht}
+\textit{Grundregel} - Die Verträge zwischen einem Cloud Provider und einem Kunden können sehr unterschiedlich gestaltet sein, weshalb eine abstrakte Qualifizierung - d.h. eine allgemeine Einordnung in die Vertragswelt des Schweizerischen Obligationenrechts - nicht möglich ist.  Je nach Ausgestaltung kann es sich um einen Innominatvertrag mit u.a. mietvertraglichen, auftragsrechtlichen oder auch werkvertragsähnlichen Komponenten handeln. Die herrschende Lehre scheint sich jedoch einig zu sein, dass es dem Cloud Anbieter grundsätzlich erlaubt ist, ein Subunternehmen (i.c. ein Sub-Provider) beizuziehen. Aufgrund der bisherigen Darstellung der rechtlichen Situation in der Cloud muss der Cloud Anbieter jedoch zwingend dazu verpflichtet werden, sämtliche vereinbarte Pflichten zwischen ihm und dem Kunden auch auf seinen Subunternehmer zu überbinden.
+
+\merkbox[0.7\textwidth]{Der Cloud Anbieter ist vertraglich zu verpflichten, sämtliche Pflichten gegenüber dem Kunden auch auf Subunternehmen zu überbinden, mit der Pflicht zur Weiterüberbindung.}
+
+\textit{Ausnahme} - Die wichtigste Ausnahme bezüglich Subunternehmen des Providers betrifft die Bearbeitung von Personendaten. Aufgrund der strengeren Vorschriften mit Blick auf das Datenschutzniveau eines Landes sind die vertraglichen Regelungen zwischen dem Cloud Anbieter und den Kunden diesbezüglich noch strenger zu gestalten. Das EDÖB rät in einem solchen Fall sogar dazu, dem Cloud Anbieter vertraglich die Weitergabe der Datenbearbeitung an Drittunternehmen zu verbieten \footnote{\href{https://www.edoeb.admin.ch/edoeb/de/home/datenschutz/Internet\_und\_Computer/cloud-computing/erlaeuterungen-zu-cloud-computing.html}{https://www.edoeb.admin.ch/edoeb/de/home/datenschutz/Internet\_und\_Computer/cloud-computing/erlaeuterungen-zu-cloud-computing.html}, letztmals besucht: \today. Ob der Cloud Anbieter eine solch strenge Verpflichtung in der Praxis eingehen wird, erscheint mehr als nur fraglich, da ihm dadurch jegliche Flexibilität bei der Bewältigung von Arbeitslastspitzen genommen würde.}.
+
+\merkbox[0.7\textwidth]{Im Falle von Personendaten im Sinne des Datenschutzgesetzes sind mit dem Cloud Anbieter vertragliche Datenschutzgarantien abzuschliessen, ebenfalls mit der Pflicht zur Weiterüberbindung.}
+
+\textit{Fallbeispiel:} Das nachfolgende Beispiel soll den etwas speziellen Ausdruck \glqq mit der Pflicht zur Weiterüberbindung\grqq{} illustrieren.
+
+\begin{quote}
+\textit{Sachverhalt:} Ein Schweizer Bekleidungsunternehmen möchte aufgrund seines immensen Wachstums in den letzten Jahren seine gesamten IT Ressourcen an ein Cloud Provider auslagern. Aufgrund der ebenfalls betroffenen Kundendaten entschliesst sich das Unternehmen, einen entsprechenden Vertrag mit einem europäischen Cloud Anbieter abzuschliessen. Der Vertrag enthält unter anderem eine vertragliche Datenschutzgarantie, welche vom Cloud Anbieter auch auf seine Subunternehmen zu überbinden ist.
+
+\textit{Fragestellung:} Ist eine solche Bestimmung zum Schutz der Personendaten ausreichend?
+
+\textit{Beurteilung:} Obwohl der Ansatz grundsätzlich gut ist, fehlt in der Bestimmung die - um es in der Sprache der Informatik zu formulieren - rekursive Pflicht zur Weiterüberbindung. Mit anderen Worten könnte ein Subunternehmen mit der aktuellen Vertragsgestaltung ein weiteres Sub(sub)unternehmen (bspw. in den USA) beauftragen, ohne dass diesem die vertraglichen Datenschutzgarantien aufgebrummt werden müssen. Selbstverständlich kann der Cloud Kunde gegenüber seinem direkten Vertragspartner bei Nichteinhaltung der Datenschutzgarantien Regress nehmen -  es ist jedoch als Cloud Kunde wichtig, zu verstehen, dass letztlich dennoch er als Auftraggeber gegenüber den betroffenen Personen für die Einhaltung der datenschutzrechtlichen Vorschriften verantwortlich ist und eine Pflicht zur Weiterüberbindung der Datenschutzgarantien und Absicherung durch eine Konventionalstrafe zumindest die Aufmerksamkeit des Cloud Anbieters und seiner Subunternehmen fördert.
+\end{quote}
+
+\pagebreak
+
+\section{Schuldbetreibungs- und Konkursrecht}\label{konkurs}
+\textit{Grundregel} - Im Gegensatz zu den meisten anderen Rechtsgebieten, ist eine Gerichtsstandsvereinbarung und eine vertragliche Festlegung des anwendbaren Rechts nicht möglich \footnote{vgl. dazu auch Kapitel \ref{anwendbaresrecht}}. Somit stellt sich als erstes die Frage nach dem anwendbaren Insolvenzrecht. Grundsätzlich bestimmt sich dieses nach dem Sitz des Cloud Anbieters, wobei nochmals darauf hingewiesen sei, dass im Internationalen Privatrecht gerade bei speziellen organisatorischen Strukturen (bspw. verschiedene Serverstandorte, verschiedene Tochtergesellschaften) auch andere Beurteilungen in Betracht fallen können. Nachfolgend soll nur der Konkurs nach dem Schweizerischen Schuldbetreibungs- und Konkursrecht SchKG näher betrachtet werden.
+
+In einem Konkurs nach Schweizer Recht steht dem Gläubiger grundsätzlich ein sog. Aussonderungsanspruch für bewegliche Sachen in seinem Eigentum zu, welche sich im Besitz des Konkursiten befinden. Dieser Anspruch ermöglicht es dem Gläubiger, diese Sachen vor dem Konkurs zu retten. Nach herrschender Lehre und der konstanten Rechtsprechung des Bundesgerichts besteht dieser Aussonderungsanspruch jedoch nur für bewegliche Sachen und somit \textbf{nicht} für elektronische Daten, die der Gläubiger (i.c. der Cloud Kunde) beim sich im Konkurs befindlichen Cloud Anbieter gespeichert hat. Somit stellt sich nur noch die Frage, ob das Konkursamt die Daten des Cloud Kunden auch verwerten (d.h. an Dritte verkaufen) kann. Während ein Teil der Lehre und auch der kantonalen Konkursämter verneint, betrachten andere (u.a. der Kanton Zürich) die Verwertung der Daten grundsätzlich als zulässig. Eine einheitliche Regelung findet sich jedoch nicht, weshalb in einem Vertrag zwischen dem Cloud Anbieter und dem Kunden zwingend die nachfolgenden Bestimmungen festgehalten werden müssen.
+
+\merkbox[0.7\textwidth]{Vertraglich muss zwingend festgehalten werden, dass sämtliche gespeicherten Daten vertraulich sind und der Cloud Anbieter auf ein allfälliges Retentionsrecht bezüglich der verwertbaren Daten des Cloud Kunden verzichtet. Zudem ist ein Verwertungsverbot der Daten und ein Verfahren für die Löschung derjenigen festzulegen.}
+
+\textit{Ausnahmen} - Selbst durch die vorgenannten Vertragsbestimmungen lässt sich nicht jegliches Restrisiko vermeiden. So beurteilt der Kanton Zürich die Verwertbarkeit der Kundendaten des in Konkurs geratenen Cloud Anbieters nicht nach vertraglichen Aspekten, sondern im Rahmen einer Interessenabwägung zwischen der Vertraulichkeit und der Datenverwertung \footnote{vgl. dazu das Positionspapier des Datenschutzbeauftragten ZH im Anhang \ref{C}}. Demgegenüber anerkennt der Gesetzgeber in Luxemburg ein Aussonderungsrecht für eindeutig zuordenbaren Daten im Konkurs \footnote{Details dazu finden sich in der Masterthesis \textit{Cloud Computing – Eine rechtliche Gewitterwolke?} von Eric T. Neuenschwander ab Seite 29 (inkl. Fussnoten).}.
+
+\textit{Fallbeispiel} - Aufgrund des Fehlens von Gerichtsurteilen soll anstelle eines Fallbeispiels aufgezeigt werden, dass sich der Gesetzgeber (i.c. die Politik) der Problematik von Cloud Daten in der Konkursmasse durchaus bewusst ist. So hat Nationalrat Marcel Dobler von der FDP vor wenigen Tagen eine parlamentarische Initiative angestossen, welche die Herausgabe von Kundendaten im Konkursfall rechtlich verbindlich regeln soll \footnote{Details dazu finden sich auf der Homepage der FDP unter \href{https://www.fdp.ch/aktuell/blog/blog-detail/news/cloud-speicher-die-datenherausgabe-im-konkurs-muss-geregelt-werden/}{https://www.fdp.ch/aktuell/.../} und im Artikel der Netzwoche unter \href{http://www.netzwoche.ch/news/2018-05-08/daten-sollen-nach-provider-konkurs-herausgegeben-werden}{http://www.netzwoche.ch/news/2018-05-08/.../}.}. Aufgrund des in der Schweiz etwas trägen Gesetzgebungsprozesses dürfte es jedoch noch einige Jahre (oder Jahrzehnte) dauern, bis die entsprechend entworfenen Gesetze tatsächlich in Kraft treten werden.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/fdpralinit.pdf}
+\caption{FDP Homepage zur parlamentarischen Initiative von NR Marcel Dobler}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\section{Haftpflichtrecht}
+\textit{Grundregel} - Die allgemeinen Grundlagen der vertraglichen Haftung zwischen Cloud Provider und Cloud Kunde finden sich in den Artikel 97 ff. des Obligationenrechts (OR). Grundsätzlich darf und wird der Cloud Provider die allgemeine vertragliche Haftung wegbedingen. Zudem zeigt sich aufgrund der bereits erläuterten zu berücksichtigenden Gesetzesartikel, dass der Einhaltung des Service Level Agreement eine viel grössere Bedeutung zukommt, als derjenigen der allgemeinen Haftung. Bezüglich der Absicherung, Durchsetzbarkeit (i.e. Konventionalstrafen) und Schadensberechnung wird auf die Vorlesung zum entsprechenden Thema verwiesen. Allerdings ist festzuhalten, dass im Hauptvertrag zwingend Bezug auf das SLA genommen werden muss.
+
+\merkbox[0.7\textwidth]{Der Hauptvertrag muss das Service Level Agreement inklusive dessen Durchsetzbarkeit etc. zwingend als intergrierenden Vertragsbestandteil festlegen.}
+
+\textit{Ausnahme} - In der Schweizerischen Gesetzgebung kann die Haftung nicht vollständig wegbedungen werden. Nach Artikel 100 Abs. 1 OR sind Freizeichnungsklauseln nichtig, wenn sie die Haftung für rechtswidrige Absicht oder grobe Fahrlässigkeit ausschliessen. Übersetzt bedeutet dies grundsätzlich, dass die Haftung bei vorsätzlichen Handlungen (bspw. dem absichtlichen Löschen von Daten des Kunden) oder grobfahrlässigen Tätigkeiten (bspw. Stromstecker des Servers ziehen) durch den Cloud Provider nicht ausgeschlossen werden kann. Eine allfällige solche Bestimmung im Vertrag gilt als nichtig, d.h. sie wird nach Artikel 20 Abs. 2 des OR grundsätzlich einfach als \glqq wie nicht im Vertrag geregelt\grqq{} betrachtet.
+
+\merkbox[0.7\textwidth]{Der Vertrag darf die allgemeine Haftung nicht vollständig wegbedingen - ansonsten ist zumindest die jeweilige Bestimmung nichtig.}
+
+\textit{Fallbeispiel} - Leider konnte kein einziger gerichtlicher Entscheid gefunden werden, der die Abgrenzung zwischen Service Level Agreement und der allgemeinen Haftung aufzeigen kann und von welchem ein Fallbeispiel hätte abgeleitet werden können. Es sei jedoch nochmals darauf hingewiesen, dass im Rahmen der SLA messbare Leistungskriterien und entsprechende (Konventional-)Strafen betragsmässig definiert werden müssen.
+
+\pagebreak
+
+\section{Branchenspezifische Regelwerke}
+Zum Schluss sind noch einige Erläuterungen zu speziell geregelten Berufsgattungen nötig. All diesen Berufsgattungen gemeinsam ist eine explizite Regelung in verschiedenen Spezialgesetzen sowie die gesetzliche Verankerung eines sog. Berufsgeheimnisses. Diesen Spezialregelungen gilt es bei einem Gang in die Cloud besondere Beachtung zu schenken.
+
+\merkbox[0.7\textwidth]{Untersteht ein Unternehmen branchenspezifischen Gesetzen oder sieht das Gesetz für den entsprechenden Unternehmenstyp ein Berufsgeheimnis vor, sind einerseits die Spezialgesetze, allfällige Erlasse von Aufsichtsbehörden und interne Richtlinien zwingend von einem Juristen oder Anwalt zu prüfen und daraus abgeleitete Richtlinien zu beachten. Andererseits gilt es, die Zertifizierungen des Cloud Providers zu berücksichtigen.}
+
+\subsection{Banken und Versicherungen}
+Für diese Branchen gelten insbesondere das Bundesgesetz über die Banken und Sparkassen (Bankengesetz) und das Bundesgesetz über den Versicherungsvertrag (VVG). Sämtliche Unternehmen dieser Branchen unterstehen der Eidgenössischen Finanzmarktaufsicht FINMA, welche den gesetzlichen Auftrag hat, die entsprechenden Unternehmen zu bewilligen, zu überwachen und das Aufsichtsrecht gesetzeskonform durchzusetzen. Zudem kann die FINMA - sofern ein Gesetz dies vorsieht - auch zusätzliche Massnahmen in Form von Verordnungen und Weisungen erlassen.
+
+Im Bereich des Cloud Computing ist insbesondere das per 1. April 2018 in Kraft getretene Rundschreiben 2018/3 betreffend Outsourcing bei Banken und Versicherungen von Bedeutung, welches unter anderem eine verschärfte Kontroll- und Aufsichtspflicht und eine Inventarisierung der ausgelagerten Funktionen vorschreibt (vgl. Anhang \ref{B}). Auf die in den Medien viel diskutierte Meldepflicht für die Auslagerung von Client Identifying Data (CID, d.h. Name, Vorname, Telefonnummern, Post- und E-Mail-Adressen oder Passnummer \footnote{vgl. dazu auch den Abschnitt \ref{personendaten} zum Thema Personendaten und Datenschutz}) ins Ausland wurde jedoch trotz Bankengeheimnis nach Artikel 47 des Bankengesetz verzichtet \footnote{Artikel Inside IT vom 6. Dezember 2017, \href{https://www.inside-it.ch/articles/49607}{https://www.inside-it.ch/articles/49607}, letztmals besucht: \today}.
+
+Für diese Branchen besonders interessant sind Cloud Provider, welche die ISO 27001 Zertifizierung besitzen und die FINMA Richtlinien explizit erfüllen. Ein Beispiel für einen entsprechend ausgerüsteten Cloud Provider ist der Anbieter APPUiO, welcher im Rahmen der Vorlesung Cloud Solutions im Jahr 2017 näher betrachtet wurde.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/appuio_iso.pdf}
+\caption{APPUiO Cloud ISO Zertifizierung und FINMA Richtlinien}
+\end{center}
+\end{figure}
+
+\subsection{Anwaltstätigkeit}
+In einer vergleichbaren Situation wie die Banken und Versicherungen befinden sich Anwaltskanzleien. Sie unterstehen insbesondere dem Bundesgesetz über die Freizügigkeit der Anwältinnen und Anwälte (BGFA) und unterliegen nach Artikel 13 BGFA einem sowohl die Anwältinnen und Anwälte als auch deren Hilfspersonen umfassenden Berufsgeheimnis. Im Gegensatz zu den Banken und Versicherungen wird die Aufsicht jedoch nicht auf Bundesebene sondern durch kantonale Aufsichtsbehörden vollzogen. Wichtige Richtlinien und Hinweise zum Thema Cloud Computing im Anwaltsbereich finden sich zudem auf der Homepage des Schweizerischen Anwaltsverbandes SAV \footnote{bspw. \href{https://www.sav-fsa.ch/de/anwaltsrecht/literatur/allgemeines.htm\#titel\_umzug-einer-kanzlei-in-die-cloud}{https://www.sav-fsa.ch/...titel\_umzug-einer-kanzlei-in-die-cloud}, letztmals besucht: \today}.
+
+\subsection{Weitere Branchen}
+Ebenfalls ähnliche Strukturen und Regelungen gelten für die privatrechtlichen Berufsgattungen der Ärztinnen und Ärzte, Psychologinnen und Psychologen oder Spitäler. Der Vollständigkeit halber sei an dieser Stelle nochmals auf öffentlichrechtliche Organisationen (i.e. Gerichte, Amtsträger, Steuerämter u.v.m.) hingewiesen, bei denen die strengeren öffentlichrechtlichen Regelungen oftmals einem Amtsgeheimnis entspringen.
+
+
+\chapter{Fazit}
+Die vorangegangenen Kapitel dürften viele Leserinnen und Leser davor zurückschrecken lassen, ihre Daten in die Cloud auszulagern. Meines Erachtens ist Zurückhaltung oder gar Angst bezüglich der Auslagerung von Daten in die Cloud fehl am Platz - einerseits überwiegen in vielen Fällen die wirtschaftlichen Vorteile und andererseits lässt sich das rechtliche Risiko eines Going to Cloud durch das Berücksichtigen der erarbeiteten Merkboxen (zusammengetragen in nachfolgendem Flussdiagramm) und einen entsprechend abgesicherten Vertrag mit dem Cloud Provider stark minimieren. Zudem dürften rund 95\% der in Frage stehenden Daten eines nicht unter Spezialregelungen fallenden Unternehmens erst gar nicht in den Geltungsbereich einer der vorgenannten Gesetze fallen. Für die übrigen 5\% der Daten ist sodann aufgrund einer umfassender Risikoabschätzungen zu entscheiden, ob eine Separation und ein Verbleib der Daten beim Kunden oder eine Ablage der Daten in der Cloud mit entsprechend ausgearbeitetem Vertrag die sinnvollere Lösung darstellt.
+
+Trotzdem möchte ich an dieser Stelle nochmals die beiden meiner Ansicht nach heikelsten Themen ansprechen:
+\begin{itemize}[itemsep=0pt]
+\item Aus juristischer Sicht die grösste Problematik dürfte im Bereich des Konkursrechtes und der Verwertung von Kundendaten eines Cloud Providers im Rahmen des Konkurses liegen. Diese unbefriedigende Situation scheint der Gesetzgeber respektive die Politik jedoch erkannt zu haben. Eine klare diesbezügliche Regelung ist meiner Meinung nach zwingend und so zeitnah wie möglich nötig.
+\item Das nach zweite problematische Themengebiet der Verschlüsselung entspringt nicht alleine den juristischen Vorschriften, sondern vielmehr einem fehlenden technischen Verständnis des Gesetzgebers respektive einer fehlenden Kommunikation zwischen der Informatik und der juristischen Welt. Nahezu sämtliche juristischen Probleme könnten durch eine Verschlüsselung der Daten in der Cloud und Verbleib der privaten Schlüssel beim Cloud Kunden ausgemerzt werden. Viele juristische Abhandlungen nehmen dementsprechend auch genau darauf Bezug, ohne die technischen Probleme dahinter anzusprechen - denn mit den Standardverschlüsselungssystemen ist dies logisch gesehen schlichtweg nicht möglich und alternative Verfahren wie die homomorphe Verschlüsselung (d.h. das Rechnen mit verschlüsselten Daten) stecken noch in den Kinderschuhen.
+\end{itemize}
+
+Zum Schluss sei nochmals erwähnt, dass eine umfassende juristische Abklärung eines konkreten Falles zum Thema Auslagerung in die Cloud nicht die Aufgabe einer Informatikerin oder eines Informatikers sondern einer Juristin oder eines Juristen respektive einer Anwältin oder eines Anwalts mit entsprechender Spezialisierung ist. Sollte trotzdem einmal ein Cloud Vertrag auf dem Bürotisch einer Informatikabteilung landen, kann mit nachfolgendem Diagramm jedoch zumindest abgeschätzt werden, ob der Vertrag zurück in die juristische Abteilung wandern sollte oder nicht.
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/flussdiagramm01.pdf}
+\includegraphics[width=\textwidth]{images/flussdiagramm02.pdf}
+\includegraphics[width=\textwidth]{images/flussdiagramm03.pdf}
+\end{center}
+
+
+\chapter{Anhang}
+\renewcommand{\thesection}{\Alph{section}}
+\section{Kantonale Merkblätter ZH Cloud}\label{A}
+\includepdf[pages={1-},width=\textwidth]{pdf/Leitfaden_Bearbeiten_im_Auftrag.pdf}
+
+\includepdf[pages={1-},width=\textwidth]{pdf/Merkblatt_Cloud_Computing.pdf}
+
+\pagebreak
+
+\section{FINMA Rundschreiben 2008/21 und 2018/3}\label{B}
+\includepdf[pages={1-},width=\textwidth]{pdf/finmarundschreiben.pdf}
+
+\includepdf[pages={1-},width=\textwidth]{pdf/finmars201803.pdf}
+
+\pagebreak
+
+\section{Kundendaten im Konkursverfahren (DSB ZH)}\label{C}
+\includepdf[pages={1-},width=\textwidth]{pdf/Kundendaten_im_Konkursverfahren.pdf}
+
+\end{document}

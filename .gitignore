@@ -1,0 +1,31 @@
+# LaTeX
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bcf
+*-blx.bib
+*.blg
+*.glg
+*.gls
+*.glo
+*.synctex.gz
+*.ist
+*.lof
+*.log
+*.lol
+*.lot
+*.out
+*.run.xml
+*.toc
+*.xdy
+*.fls
+*.fdb_latexmk
+*eps-converted-to*
+
+# Hidden Files
+.*
+
+# Exceptions
+!.gitignore
